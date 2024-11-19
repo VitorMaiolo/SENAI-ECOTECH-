@@ -1,0 +1,24 @@
+body{
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    background-image: url(minecraft.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+button{
+    position: absolute;
+    padding: 5%;
+    width: 40%;
+    bottom: 39%;
+    background-color: transparent;  
+    border: none;                  
+    opacity: 0;   
+}
