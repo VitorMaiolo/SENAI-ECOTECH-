@@ -4,23 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SENAI ECOTECH</title>
-    <link rel="stylesheet" href="/PÁGINA JOGO/main.css">
+    <link rel="stylesheet" href="./main.css">
 </head>
 <body>
     <div class="imagem">
-        <img src="/PÁGINA JOGO/arvore.png" alt="Árvore de Natal">
-        <div class="bola" id="bola_vermelha" draggable="true"></div>
-        <div class="bola" id="bola_verde" draggable="true"></div>
-        <div class="bola" id="bola_azul" draggable="true"></div>
-        <div class="bola" id="bola_amarela" draggable="true"></div>
-
+        <img src="./arvore.png" alt="Árvore de Natal">
+        <div class="bola vermelho" id="vermelho" draggable="true" ondragstart="drag(event)"></div>
+        <div class="bola verde" id="verde" draggable="true" ondragstart="drag(event)"></div>
+        <div class="bola azul" id="azul" draggable="true" ondragstart="drag(event)"></div>
+        <div class="bola amarelo" id="amarelo" draggable="true" ondragstart="drag(event)"></div>
     </div>
-    <div class="caixa">
-        <img src="/Presentes_Imagem/semCor.png" id="amarelo" class="gift" onclick="color(1)">
-        <img src="/Presentes_Imagem/semCor.png" id="azul" class="gift" onclick="color(2)">
-        <img src="/Presentes_Imagem/semCor.png" id="verde" class="gift" onclick="color(3)">
-        <img src="/Presentes_Imagem/semCor.png" id="vermelho" class="gift" onclick="color(4)">
+    
+    <div class="caixa" id="caixa">
+        <img src="/PROJETO ECOTECH/Presentes_Imagem/semCor.png" class="gift" ondrop="drop(event)" ondragover="allowDrop(event)" id="azul">
+        <img src="/PROJETO ECOTECH/Presentes_Imagem/semCor.png" class="gift" ondrop="drop(event)" ondragover="allowDrop(event)" id="verde">
+        <img src="/PROJETO ECOTECH/Presentes_Imagem/semCor.png" class="gift" ondrop="drop(event)" ondragover="allowDrop(event)" id="amarelo">
+        <img src="/PROJETO ECOTECH/Presentes_Imagem/semCor.png" class="gift" ondrop="drop(event)" ondragover="allowDrop(event)" id="vermelho">
     </div>
+    
+    <script src="./main.js"></script>
 </body>
-<script src="/PÁGINA JOGO/main.js"></script>
 </html>

@@ -47,25 +47,26 @@ body {
     background-color: red;  /* Default color */
 }
 
-#bola_vermelha {
+.vermelho {
     background-color: red;
     top: 24%;
     left: 46%;
+    cursor: pointer;
 }
 
-#bola_verde {
+.verde {
     background-color: green;
     top: 33%;
     left: 30%;
 }
 
-#bola_azul {
+.azul {
     background-color: blue;
     top: 33%;
     right: 30%;
 }
 
-#bola_amarela {
+.amarelo {
     background-color: yellow;
     top: 40%;
     left: 46%;
