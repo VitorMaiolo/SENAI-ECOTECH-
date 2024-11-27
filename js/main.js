@@ -40,6 +40,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 contador = 0;
                 fim.classList.remove('hidden');
                 fim.classList.add('fim')
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 5000);
             }
         } else {
             mensagem.classList.remove('hidden');
