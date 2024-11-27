@@ -2,6 +2,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Variáveis para armazenar os elementos das bolas e presentes
     const bolas = document.querySelectorAll('.bola');
     const presentes = document.querySelectorAll('.gift');
+    let contador = 0;
+    acertou("natalecotec/ligar/faixa/apagar")
 
     // Variáveis para controlar a posição das bolas enquanto o toque está ativo
     let bolaSelecionada = null;
@@ -16,6 +18,25 @@ document.addEventListener('DOMContentLoaded', () => {
             
             // Torna a bola invisível (desaparece) após ser colocada corretamente
             bola.style.display = 'none';  // A bola desaparece da tela
+
+            if (bola.id == 'azul') {
+                acertou("natalecotec/ligar/faixa/blue")
+                contador++;
+            } else if (bola.id == 'amarelo') {
+                acertou("natalecotec/ligar/faixa/yellow")
+                contador++;
+            } else if (bola.id == 'verde') {
+                acertou("natalecotec/ligar/faixa/green")
+                contador++;
+            } else if (bola.id == 'vermelho') {
+                acertou("natalecotec/ligar/faixa/red")
+                contador++;
+            }
+
+            if (contador == 4) {
+                acertou("natalecotec/ligar/faixa/estrela")
+                contador = 0
+            }
         }
     }
 
