@@ -13,11 +13,11 @@ body{
     overflow: hidden;
 }
 
-button{
+a{
     position: absolute;
-    padding: 5%;
-    width: 40%;
-    bottom: 39%;
+    padding: 8%;
+    width: 60%;
+    bottom: 38%;
     background-color: transparent;  
     border: none;                  
     opacity: 0;   
