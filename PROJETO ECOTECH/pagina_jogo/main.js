@@ -1,77 +1,72 @@
-let draggedElement = null;
-let initialPosition = {};  // Para armazenar a posição inicial das bolas
+document.addEventListener('DOMContentLoaded', () => {
+    // Variáveis para armazenar os elementos das bolas e presentes
+    const bolas = document.querySelectorAll('.bola');
+    const presentes = document.querySelectorAll('.gift');
 
-// Função chamada quando o toque inicia
-function onTouchStart(event) {
-    event.preventDefault();
-    draggedElement = event.target;
+    // Variáveis para controlar a posição das bolas enquanto o toque está ativo
+    let bolaSelecionada = null;
+    let offsetX = 0;
+    let offsetY = 0;
 
-    // Armazena a posição inicial da bola para voltar se for solta no lugar errado
-    initialPosition = {
-        left: draggedElement.style.left,
-        top: draggedElement.style.top
-    };
-
-    // Ajusta a posição do elemento arrastado para começar no toque
-    const touch = event.touches[0];
-    draggedElement.style.position = "absolute";  // Faz com que o elemento flutue sobre a tela
-    draggedElement.style.left = touch.pageX - draggedElement.offsetWidth / 2 + "px";  // Alinha o centro do toque
-    draggedElement.style.top = touch.pageY - draggedElement.offsetHeight / 2 + "px";
-}
-
-// Função chamada quando o toque está em movimento
-function onTouchMove(event) {
-    if (draggedElement) {
-        // Atualiza a posição da bola enquanto o dedo está se movendo
-        const touch = event.touches[0];
-        draggedElement.style.left = touch.pageX - draggedElement.offsetWidth / 2 + "px";
-        draggedElement.style.top = touch.pageY - draggedElement.offsetHeight / 2 + "px";
-    }
-}
-
-// Função chamada quando o toque é finalizado (ao soltar)
-function onTouchEnd(event) {
-    if (draggedElement) {
-        // Quando o toque termina, verificamos se a bola foi colocada no presente correto
-        const touch = event.changedTouches[0];
-        let target = document.elementFromPoint(touch.pageX, touch.pageY);  // Pega o elemento sob o toque
-
-        // Verifica se o alvo é um presente e se a cor da bola corresponde ao id do presente
-        if (target && target.classList.contains('gift') && draggedElement.classList.contains(target.id)) {
-            // Atualiza a imagem do presente se a bola for colocada no lugar certo
-            switch (draggedElement.id) {
-                case 'vermelho':
-                    target.src = '/PROJETO ECOTECH/Presentes_Imagem/vermelho.png';  // Caminho para a imagem vermelha
-                    break;
-                case 'verde':
-                    target.src = '/PROJETO ECOTECH/Presentes_Imagem/verde.png';  // Caminho para a imagem verde
-                    break;
-                case 'azul':
-                    target.src = '/PROJETO ECOTECH/Presentes_Imagem/azul.png';  // Caminho para a imagem azul
-                    break;
-                case 'amarelo':
-                    target.src = '/PROJETO ECOTECH/Presentes_Imagem/amarelo.png';  // Caminho para a imagem amarela
-                    break;
-            }
-
-            // Esconde a bola, removendo-a da tela
-            draggedElement.style.display = "none";  // A bola desaparece
-
-        } else {
-            // Se a bola for solta em outro lugar (não no presente certo), volta para sua posição inicial
-            draggedElement.style.left = initialPosition.left;
-            draggedElement.style.top = initialPosition.top;
+    // Função para alterar a imagem do presente quando a bola for colocada corretamente
+    function verificarCor(bola, presente) {
+        if (bola.id === presente.id) {
+            // Altera a imagem do presente para a correspondente à cor
+            presente.src = `/PROJETO ECOTECH/Presentes_Imagem/${bola.id}.png`;
+            
+            // Torna a bola invisível (desaparece) após ser colocada corretamente
+            bola.style.display = 'none';  // A bola desaparece da tela
         }
-
-        // Reseta a posição do elemento arrastado para não interferir em outros movimentos
-        draggedElement.style.position = "fixed";  // Volta a bola para o estilo de fixação na árvore
-        draggedElement = null;  // Limpa o elemento arrastado
     }
-}
 
-// Atribui os eventos de toque às bolas
-document.querySelectorAll('.bola').forEach(bola => {
-    bola.addEventListener('touchstart', onTouchStart);
-    bola.addEventListener('touchmove', onTouchMove);
-    bola.addEventListener('touchend', onTouchEnd);
+    // Função que é chamada quando o toque começa
+    function onTouchStart(event) {
+        bolaSelecionada = event.target; // A bola que foi tocada
+        if (bolaSelecionada && bolaSelecionada.classList.contains('bola')) {
+            // Calcula a diferença entre a posição do toque e a posição da bola
+            const rect = bolaSelecionada.getBoundingClientRect();
+            offsetX = event.touches[0].clientX - rect.left;
+            offsetY = event.touches[0].clientY - rect.top;
+        }
+    }
+
+    // Função que é chamada enquanto o toque se move
+    function onTouchMove(event) {
+        if (bolaSelecionada) {
+            // Atualiza a posição da bola com base no movimento do toque
+            bolaSelecionada.style.position = 'absolute';
+            bolaSelecionada.style.left = `${event.touches[0].clientX - offsetX}px`;
+            bolaSelecionada.style.top = `${event.touches[0].clientY - offsetY}px`;
+        }
+    }
+
+    // Função que é chamada quando o toque termina
+    function onTouchEnd(event) {
+        if (bolaSelecionada) {
+            // Verifica se a bola foi colocada sobre um presente
+            presentes.forEach(presente => {
+                const rectPresente = presente.getBoundingClientRect();
+                const rectBola = bolaSelecionada.getBoundingClientRect();
+
+                // Verifica se a bola está dentro da área do presente
+                if (rectBola.right > rectPresente.left && rectBola.left < rectPresente.right &&
+                    rectBola.bottom > rectPresente.top && rectBola.top < rectPresente.bottom) {
+                    verificarCor(bolaSelecionada, presente);
+                }
+            });
+
+            // Restaura a posição original da bola
+            bolaSelecionada.style.position = '';
+            bolaSelecionada.style.left = '';
+            bolaSelecionada.style.top = '';
+            bolaSelecionada = null;
+        }
+    }
+
+    // Adiciona os event listeners para cada bola
+    bolas.forEach(bola => {
+        bola.addEventListener('touchstart', onTouchStart);
+        bola.addEventListener('touchmove', onTouchMove);
+        bola.addEventListener('touchend', onTouchEnd);
+    });
 });

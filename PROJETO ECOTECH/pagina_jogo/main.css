@@ -40,7 +40,8 @@ body {
 }
 
 .bola {
-    position: fixed;  /* Faz a bola ser posicionada em cima da árvore */
+    touch-action: none;
+    position: absolute;  /* Faz a bola ser posicionada em cima da árvore */
     width: 30px;
     height: 30px;
     border-radius: 50%;
