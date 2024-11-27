@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    alert("javascript carregado !!!")
     // Variáveis para armazenar os elementos das bolas e presentes
     const bolas = document.querySelectorAll('.bola');
     const presentes = document.querySelectorAll('.gift');
