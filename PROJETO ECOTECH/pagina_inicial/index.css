@@ -15,9 +15,8 @@ body{
 
 a{
     position: absolute;
-    padding: 8%;
-    width: 60%;
-    bottom: 38%;
+    width: 100%;
+    height: 100%;
     background-color: transparent;  
     border: none;                  
     opacity: 0;   

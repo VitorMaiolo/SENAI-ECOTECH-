@@ -54,25 +54,25 @@ body {
 
 .vermelho {
     background-color: red;
-    top: 24%;
-    left: 46%;
+    top: 40%;  /* Ajustado para a posição correta na árvore */
+    left: 46%; /* Centralizado em relação à árvore */
     cursor: pointer;
 }
 
 .verde {
     background-color: green;
-    top: 33%;
-    left: 30%;
+    top: 54%;  /* Ajustado para a posição correta na árvore */
+    right: 63%; /* Ajustado para um bom posicionamento */
 }
 
 .azul {
     background-color: blue;
-    top: 33%;
-    right: 30%;
+    top: 54%;  /* Ajustado para a posição correta na árvore */
+    left: 63%; /* Ajustado para a posição correta na árvore */
 }
 
 .amarelo {
     background-color: yellow;
-    top: 40%;
-    left: 46%;
+    top: 60%;  /* Ajustado para a posição correta na árvore */
+    left: 46%; /* Centralizado em relação à árvore */
 }
