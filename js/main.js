@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const presentes = document.querySelectorAll('.gift');
     let contador = 0;
     const mensagem = document.getElementById('mensagem-box')
+    const fim = document.getElementById('fim')
     // acertou("natalecotec/ligar/faixa/apagar")
 
     // Variáveis para controlar a posição das bolas enquanto o toque está ativo
@@ -36,7 +37,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (contador == 4) {
                 acertou("natalecotec/ligar/faixa/estrela")
-                contador = 0
+                contador = 0;
+                fim.classList.remove('hidden');
+                fim.classList.add('fim')
             }
         } else {
             mensagem.classList.remove('hidden');
