@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (bola.id === presente.id) {
             // Altera a imagem do presente para a correspondente à cor
             presente.src = `/img/${bola.id}.png`;
-            
+
             // Torna a bola invisível (desaparece) após ser colocada corretamente
             bola.style.display = 'none';  // A bola desaparece da tela
 
@@ -40,12 +40,9 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         } else {
             mensagem.classList.remove('hidden');
-        
-            setTimeout(() => { 
-                mensagem.classList.add('hidden'); 
-            }, 3000);
         }
     }
+
 
     // Função que é chamada quando o toque começa
     function onTouchStart(event) {
@@ -98,3 +95,10 @@ document.addEventListener('DOMContentLoaded', () => {
         bola.addEventListener('touchend', onTouchEnd);
     });
 });
+
+
+//Função para tentar novamente após um erro
+function again() {
+    let mensagem = document.getElementById('mensagem-box');
+    mensagem.classList.add('hidden');
+}

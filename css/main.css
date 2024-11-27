@@ -106,3 +106,11 @@ body {
 .hidden{
     display: none;
 }
+
+#again{
+    background-color: #FFF;
+    color: indigo;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 10px;
+}
