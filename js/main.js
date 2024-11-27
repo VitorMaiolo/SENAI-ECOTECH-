@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function verificarCor(bola, presente) {
         if (bola.id === presente.id) {
             // Altera a imagem do presente para a correspondente à cor
-            presente.src = `../img/${bola.id}.png`;
+            presente.src = `./img/${bola.id}.png`;
             
             // Torna a bola invisível (desaparece) após ser colocada corretamente
             bola.style.display = 'none';  // A bola desaparece da tela
