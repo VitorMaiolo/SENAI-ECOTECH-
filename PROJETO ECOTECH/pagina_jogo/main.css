@@ -2,7 +2,7 @@ body {
     margin: 0;
     padding: 0;
     width: 100vw;
-    height: 100vh;
+    min-height: 100%; /* Mudar de 100vh para min-height */
     overflow: hidden;
 }
 
@@ -19,23 +19,26 @@ body {
 }
 
 .imagem img {
-    width: 80%; /* A árvore ocupa 80% da largura da tela */
-    max-width: 300px; /* Para evitar que a imagem da árvore fique muito grande */
-    height: auto; /* Mantém a proporção da imagem */
+    width: 80%;
+    max-width: 300px;
+    height: auto;
+    object-fit: contain; /* Ajuste o object-fit para garantir que a imagem se ajuste corretamente */
 }
+
 
 .caixa {
     width: 100%;
     height: 40%;
     display: grid;
-    grid-template-columns: repeat(2, 150px); 
-    grid-template-rows: repeat(2, 150px);    
-    gap: 10px;             
-    justify-content: center; 
+    grid-template-columns: repeat(2, 1fr); /* Usando fr para distribuir a largura */
+    grid-template-rows: repeat(2, 1fr); /* Usando fr para distribuir a altura */
+    gap: 10px;
+    justify-content: center;
     align-items: center;
-    margin: 0;     
-    position: relative;  /* Para que as bolas fiquem dentro da caixa */
+    margin: 0;
+    position: relative;
 }
+
 
 .gift {
     width: 100%;
